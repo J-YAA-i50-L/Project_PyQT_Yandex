@@ -104,8 +104,10 @@ class MachCalc(QWidget, Ui_MathematicalCalculator):
             self.table.display(self.history_expression + self.sender().text())
         else:
             self.table.display(self.history_expression + self.sender().text())
+        print(self.history_expression)
         self.history_expression += self.sender().text()
         self.textBrowser.setText(self.history_expression)
+        print('\t', self.history_expression)
         self.znaks = ''
 
     def math_functions(self):  # При нажатии кнопки с функцией
@@ -132,6 +134,8 @@ class MachCalc(QWidget, Ui_MathematicalCalculator):
         if not self.point or '.' not in self.history_expression:
             if self.function in "*+-":
                 self.table.display(eval(str(self.oper) + self.function + str(self.table.intValue())))
+                print(eval(str(self.oper) + self.function + str(self.table.intValue())))
+                print(str(self.oper), self.function, str(self.table.intValue()))
             elif self.function == 'x^y':
                 self.table.display(eval(str(self.oper) + '**' + str(self.table.intValue())))
             elif self.function == 'log':
@@ -142,6 +146,7 @@ class MachCalc(QWidget, Ui_MathematicalCalculator):
         else:
             if self.function in "*+-":
                 self.table.display(eval(str(self.oper) + self.function + str(self.table.value())))
+                print(eval(str(self.oper) + self.function + str(self.table.value())))
             elif self.function == 'x^y':
                 self.table.display(eval(str(self.oper) + '**' + str(self.table.value())))
             elif self.function == 'log':
